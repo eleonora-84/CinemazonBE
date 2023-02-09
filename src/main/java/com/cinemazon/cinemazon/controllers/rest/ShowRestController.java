@@ -1,7 +1,7 @@
 package com.cinemazon.cinemazon.controllers.rest;
 
 
-import com.cinemazon.cinemazon.entities.MovieShow;
+import com.cinemazon.cinemazon.entities.Show;
 import com.cinemazon.cinemazon.services.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +19,11 @@ public class ShowRestController {
     private ShowService showService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<MovieShow>> findAllShows(){
+    public ResponseEntity<List<Show>> findAllShows(){
         return new ResponseEntity<>(showService.findAllShows(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<MovieShow> findShowById(@PathVariable long id){
+    public ResponseEntity<Show> findShowById(@PathVariable long id){
         if (showService.findShowById(id).isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
         }
@@ -33,12 +33,12 @@ public class ShowRestController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<MovieShow> createShow(@RequestBody MovieShow newShow){
+    public ResponseEntity<Show> createShow(@RequestBody Show newShow){
         return new ResponseEntity<>(showService.createShow(newShow), HttpStatus.CREATED);
     }
 
     @PutMapping("/")
-    public ResponseEntity<MovieShow> updateShow(@RequestBody MovieShow updatedShow){
+    public ResponseEntity<Show> updateShow(@RequestBody Show updatedShow){
         return new ResponseEntity<>(showService.updateShow(updatedShow), HttpStatus.OK);
     }
 

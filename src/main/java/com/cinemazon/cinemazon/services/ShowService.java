@@ -1,6 +1,6 @@
 package com.cinemazon.cinemazon.services;
 
-import com.cinemazon.cinemazon.entities.MovieShow;
+import com.cinemazon.cinemazon.entities.Show;
 import com.cinemazon.cinemazon.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,23 @@ public class ShowService {
     @Autowired
     private ShowRepository showRepository;
 
-    public List<MovieShow> findAllShows() {
+    public List<Show> findAllShows() {
         return showRepository.findAll();
     }
 
-    public Optional<MovieShow> findShowById(long id) {
+    public Optional<Show> findShowById(long id) {
         return showRepository.findById(id);
     }
 
-    public MovieShow createShow(MovieShow newShow) {
+    public Show createShow(Show newShow) {
         return showRepository.save(newShow);
     }
 
-    public MovieShow updateShow(MovieShow updatedShow) {
+    public Show updateShow(Show updatedShow) {
         if (showRepository.findById(updatedShow.getId()).isEmpty())
             return showRepository.save(updatedShow);
         else {
-            MovieShow oldShow = showRepository.findById(updatedShow.getId()).get();
+            Show oldShow = showRepository.findById(updatedShow.getId()).get();
             oldShow.setDay(updatedShow.getDay());
             oldShow.setTime(updatedShow.getTime());
             oldShow.setMovie(updatedShow.getMovie());

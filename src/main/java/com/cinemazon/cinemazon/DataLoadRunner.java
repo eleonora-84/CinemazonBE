@@ -2,7 +2,7 @@ package com.cinemazon.cinemazon;
 
 import com.cinemazon.cinemazon.entities.Auditorium;
 import com.cinemazon.cinemazon.entities.Movie;
-import com.cinemazon.cinemazon.entities.MovieShow;
+import com.cinemazon.cinemazon.entities.Show;
 import com.cinemazon.cinemazon.services.AuditoriumService;
 import com.cinemazon.cinemazon.services.MovieService;
 import com.cinemazon.cinemazon.services.ShowService;
@@ -35,10 +35,10 @@ public class DataLoadRunner implements CommandLineRunner {
         movieService.createMovie(m2);
         movieService.createMovie(m3);
 
-        showService.createShow(new MovieShow(LocalDate.of(2023, 03, 02), LocalTime.of(20,30), m1, a1));
-        showService.createShow(new MovieShow(LocalDate.of(2023, 03, 02), LocalTime.of(20,00), m2, a2));
-        showService.createShow(new MovieShow(LocalDate.of(2023, 03, 03), LocalTime.of(19,30), m3, a1));
-        showService.createShow(new MovieShow(LocalDate.of(2023, 03, 03), LocalTime.of(21,30), m1, a2));
+        showService.createShow(new Show(LocalDate.of(2023, 03, 02), LocalTime.of(20,30), m1, a1));
+        showService.createShow(new Show(LocalDate.of(2023, 03, 02), LocalTime.of(20,00), m2, a2));
+        showService.createShow(new Show(LocalDate.of(2023, 03, 03), LocalTime.of(19,30), m3, a1));
+        showService.createShow(new Show(LocalDate.of(2023, 03, 03), LocalTime.of(21,30), m1, a2));
         System.out.println("Application started");
     }
 }
