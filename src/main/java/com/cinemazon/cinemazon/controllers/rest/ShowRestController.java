@@ -12,18 +12,18 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/show")
+@RequestMapping("/api/shows")
 @CrossOrigin
 public class ShowRestController {
     @Autowired
     private ShowService showService;
 
     @GetMapping("/all")
-    private ResponseEntity<List<MovieShow>> findAllShows(){
+    public ResponseEntity<List<MovieShow>> findAllShows(){
         return new ResponseEntity<>(showService.findAllShows(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    private ResponseEntity<MovieShow> findShowById(@PathVariable long id){
+    public ResponseEntity<MovieShow> findShowById(@PathVariable long id){
         if (showService.findShowById(id).isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
         }
@@ -33,17 +33,17 @@ public class ShowRestController {
     }
 
     @PostMapping("/")
-    private ResponseEntity<MovieShow> createShow(@RequestBody MovieShow newShow){
+    public ResponseEntity<MovieShow> createShow(@RequestBody MovieShow newShow){
         return new ResponseEntity<>(showService.createShow(newShow), HttpStatus.CREATED);
     }
 
     @PutMapping("/")
-    private ResponseEntity<MovieShow> updateShow(@RequestBody MovieShow updatedShow){
+    public ResponseEntity<MovieShow> updateShow(@RequestBody MovieShow updatedShow){
         return new ResponseEntity<>(showService.updateShow(updatedShow), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<String> deleteShowById(@PathVariable long id){
+    public ResponseEntity<String> deleteShowById(@PathVariable long id){
         showService.deleteShowById(id);
         return new ResponseEntity<>("Spettacolo eliminato con successo", HttpStatus.OK);
     }

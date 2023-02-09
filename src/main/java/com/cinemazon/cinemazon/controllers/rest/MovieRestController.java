@@ -19,11 +19,11 @@ public class MovieRestController {
     MovieService movieService;
 
     @GetMapping("/all")
-    private ResponseEntity<List<Movie>> findAllMovies(){
+    public ResponseEntity<List<Movie>> findAllMovies(){
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    private ResponseEntity<Movie> findMovieById(@PathVariable long id){
+    public ResponseEntity<Movie> findMovieById(@PathVariable long id){
         if (movieService.findMovieById(id).isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
         }
@@ -33,17 +33,17 @@ public class MovieRestController {
     }
 
     @PostMapping("/")
-    private ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie){
+    public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie){
         return new ResponseEntity<>(movieService.createMovie(newMovie), HttpStatus.CREATED);
     }
 
     @PutMapping("/")
-    private ResponseEntity<Movie> updateMovie(@RequestBody Movie updatedMovie){
+    public ResponseEntity<Movie> updateMovie(@RequestBody Movie updatedMovie){
         return new ResponseEntity<>(movieService.updateMovie(updatedMovie), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<String> deleteMovieById(@PathVariable long id){
+    public ResponseEntity<String> deleteMovieById(@PathVariable long id){
         movieService.deleteMovieById(id);
         return new ResponseEntity<>("Film eliminato con successo", HttpStatus.OK);
     }
