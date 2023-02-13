@@ -31,6 +31,15 @@ public class MovieRestController {
             return new ResponseEntity<>(movieService.findMovieById(id).get(), HttpStatus.OK);
         }
     }
+    @GetMapping("/")
+    public ResponseEntity<Movie> findMovieByTitle(@RequestParam String title){
+        if (movieService.findMovieByTitle(title).isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
+        }
+        else{
+            return new ResponseEntity<>(movieService.findMovieByTitle(title).get(), HttpStatus.OK);
+        }
+    }
 
     @PostMapping("/")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie){

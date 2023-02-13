@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Show {
+public class MovieShow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -31,7 +31,7 @@ public class Show {
     @ManyToOne
     private Auditorium auditorium;
 
-    public Show(LocalDate day, LocalTime time, Movie movie, Auditorium auditorium) {
+    public MovieShow(LocalDate day, LocalTime time, Movie movie, Auditorium auditorium) {
         this.day = day;
         this.time = time;
         this.movie = movie;

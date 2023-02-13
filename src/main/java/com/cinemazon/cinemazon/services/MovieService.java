@@ -18,10 +18,14 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+
     public Optional<Movie> findMovieById(long id) {
         return movieRepository.findById(id);
     }
 
+    public Optional<Movie> findMovieByTitle(String title) {
+        return movieRepository.findMovieByTitle(title);
+    }
     public Movie createMovie(Movie newMovie) {
         return movieRepository.save(newMovie);
     }
@@ -39,7 +43,7 @@ public class MovieService {
             oldMovie.setOV(updatedMovie.isOV());
             oldMovie.setDolby(updatedMovie.isDolby());
             oldMovie.setVM14(updatedMovie.isVM14());
-            oldMovie.setVM18(updatedMovie.isVM18());
+            oldMovie.setPoster(updatedMovie.getPoster());
             return oldMovie;
         }
     }

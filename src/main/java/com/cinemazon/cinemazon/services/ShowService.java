@@ -1,6 +1,6 @@
 package com.cinemazon.cinemazon.services;
 
-import com.cinemazon.cinemazon.entities.Show;
+import com.cinemazon.cinemazon.entities.MovieShow;
 import com.cinemazon.cinemazon.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,28 +13,28 @@ public class ShowService {
     @Autowired
     private ShowRepository showRepository;
 
-    public List<Show> findAllShows() {
+    public List<MovieShow> findAllShows() {
         return showRepository.findAll();
     }
 
-    public Optional<Show> findShowById(long id) {
+    public Optional<MovieShow> findShowById(long id) {
         return showRepository.findById(id);
     }
 
-    public Show createShow(Show newShow) {
-        return showRepository.save(newShow);
+    public MovieShow createShow(MovieShow newMovieShow) {
+        return showRepository.save(newMovieShow);
     }
 
-    public Show updateShow(Show updatedShow) {
-        if (showRepository.findById(updatedShow.getId()).isEmpty())
-            return showRepository.save(updatedShow);
+    public MovieShow updateShow(MovieShow updatedMovieShow) {
+        if (showRepository.findById(updatedMovieShow.getId()).isEmpty())
+            return showRepository.save(updatedMovieShow);
         else {
-            Show oldShow = showRepository.findById(updatedShow.getId()).get();
-            oldShow.setDay(updatedShow.getDay());
-            oldShow.setTime(updatedShow.getTime());
-            oldShow.setMovie(updatedShow.getMovie());
-            oldShow.setAuditorium(updatedShow.getAuditorium());
-            return oldShow;
+            MovieShow oldMovieShow = showRepository.findById(updatedMovieShow.getId()).get();
+            oldMovieShow.setDay(updatedMovieShow.getDay());
+            oldMovieShow.setTime(updatedMovieShow.getTime());
+            oldMovieShow.setMovie(updatedMovieShow.getMovie());
+            oldMovieShow.setAuditorium(updatedMovieShow.getAuditorium());
+            return oldMovieShow;
         }
     }
 

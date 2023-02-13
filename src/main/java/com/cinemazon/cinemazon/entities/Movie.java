@@ -41,8 +41,9 @@ public class Movie {
     private boolean isVM18;
 
     private boolean isOV;
+    private String poster;
 
-    public Movie(String title, String director, int duration, boolean is3D, boolean is4K, boolean isDolby, boolean isVM14, boolean isVM18, boolean isOV) {
+    public Movie(String title, String director, int duration, boolean is3D, boolean is4K, boolean isDolby, boolean isVM14, boolean isVM18, boolean isOV, String poster) {
         this.title = title;
         this.director = director;
         this.duration = duration;
@@ -52,5 +53,6 @@ public class Movie {
         this.isVM14 = isVM14;
         this.isVM18 = isVM18;
         this.isOV = isOV;
+        this.poster = poster;
     }
 }
