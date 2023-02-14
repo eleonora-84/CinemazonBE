@@ -38,8 +38,8 @@ public class MovieService {
             oldMovie.setTitle(updatedMovie.getTitle());
             oldMovie.setDirector(updatedMovie.getDirector());
             oldMovie.setDuration(updatedMovie.getDuration());
-            oldMovie.set3D(updatedMovie.is3D());
-            oldMovie.set4K(updatedMovie.is4K());
+            oldMovie.setThreeD(updatedMovie.isThreeD());
+            oldMovie.setFourK(updatedMovie.isFourK());
             oldMovie.setOV(updatedMovie.isOV());
             oldMovie.setDolby(updatedMovie.isDolby());
             oldMovie.setVM14(updatedMovie.isVM14());
