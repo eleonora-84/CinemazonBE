@@ -38,12 +38,13 @@ public class MovieService {
             oldMovie.setTitle(updatedMovie.getTitle());
             oldMovie.setDirector(updatedMovie.getDirector());
             oldMovie.setDuration(updatedMovie.getDuration());
+            oldMovie.setPlot(updatedMovie.getPlot());
             oldMovie.setThreeD(updatedMovie.isThreeD());
             oldMovie.setFourK(updatedMovie.isFourK());
             oldMovie.setOV(updatedMovie.isOV());
             oldMovie.setDolby(updatedMovie.isDolby());
             oldMovie.setVM14(updatedMovie.isVM14());
-            oldMovie.setPoster(updatedMovie.getPoster());
+            oldMovie.setMoviePoster(updatedMovie.getMoviePoster());
             return oldMovie;
         }
     }

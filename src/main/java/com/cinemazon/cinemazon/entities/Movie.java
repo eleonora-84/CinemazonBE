@@ -30,6 +30,9 @@ public class Movie {
     @Min(1)
     private int duration;
 
+    @NotEmpty
+    private String plot;
+
     private boolean isThreeD;
 
     private boolean isFourK;
@@ -41,18 +44,19 @@ public class Movie {
     private boolean isVM18;
 
     private boolean isOV;
-    private String poster;
+    private String moviePoster;
 
-    public Movie(String title, String director, int duration, boolean isThreeD, boolean isFourK, boolean isDolby, boolean isVM14, boolean isVM18, boolean isOV, String poster) {
+    public Movie(String title, String director, int duration, String plot, boolean isThreeD, boolean isFourK, boolean isDolby, boolean isVM14, boolean isVM18, boolean isOV, String moviePoster) {
         this.title = title;
         this.director = director;
         this.duration = duration;
+        this.plot = plot;
         this.isThreeD = isThreeD;
         this.isFourK = isFourK;
         this.isDolby = isDolby;
         this.isVM14 = isVM14;
         this.isVM18 = isVM18;
         this.isOV = isOV;
-        this.poster = poster;
+        this.moviePoster = moviePoster;
     }
 }
