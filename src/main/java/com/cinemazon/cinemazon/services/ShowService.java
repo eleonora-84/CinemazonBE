@@ -5,6 +5,8 @@ import com.cinemazon.cinemazon.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,22 @@ public class ShowService {
 
     public Optional<MovieShow> findShowById(long id) {
         return showRepository.findById(id);
+    }
+
+    public List<MovieShow> findShowsByMovieTitle(String title){
+        return showRepository.findByMovieTitle(title);
+    }
+
+    public Optional<MovieShow> findShowByMovieTitleAndDayAndTime(String title, LocalDate day, LocalTime time){
+        return showRepository.findShowByMovieTitleAndDayAndTime(title, day, time);
+    }
+
+    public  List<MovieShow> findShowByDay(LocalDate day){
+        return showRepository.findByDay(day);
+    }
+
+    public List<MovieShow> findShowByTime(LocalTime time){
+        return showRepository.findByTime(time);
     }
 
     public MovieShow createShow(MovieShow newMovieShow) {

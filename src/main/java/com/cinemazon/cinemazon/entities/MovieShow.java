@@ -19,7 +19,7 @@ public class MovieShow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NotNull
-    @JsonFormat(pattern = "dd-MM-YYYY")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate day;
     @NotNull
     @JsonFormat(pattern = "HH:mm")

@@ -18,7 +18,6 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-
     public Optional<Movie> findMovieById(long id) {
         return movieRepository.findById(id);
     }
@@ -26,6 +25,7 @@ public class MovieService {
     public Optional<Movie> findMovieByTitle(String title) {
         return movieRepository.findMovieByTitle(title);
     }
+
     public Movie createMovie(Movie newMovie) {
         return movieRepository.save(newMovie);
     }
