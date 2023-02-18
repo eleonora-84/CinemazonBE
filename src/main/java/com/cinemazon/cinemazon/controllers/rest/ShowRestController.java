@@ -52,7 +52,7 @@ public class ShowRestController {
     @GetMapping("/date")
     public ResponseEntity<List<MovieShow>> findShowByDay(@RequestParam(value = "day", required = true) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate day){
         if (showService.findShowByDay(day).isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Giorno non valido");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Giorno non valido");
         } else {
             return new ResponseEntity<>(showService.findShowByDay(day), HttpStatus.OK);
         }
@@ -60,7 +60,7 @@ public class ShowRestController {
     @GetMapping("/time")
     public ResponseEntity<List<MovieShow>> findShowByTime(@RequestParam(value = "time", required = true) @DateTimeFormat(pattern = "HH:mm") LocalTime time){
         if (showService.findShowByTime(time).isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Orario non valido");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Orario non valido");
         } else {
             return new ResponseEntity<>(showService.findShowByTime(time), HttpStatus.OK);
         }
