@@ -31,6 +31,11 @@ public class AuditoriumRestController {
         }
     }
 
+    @GetMapping("/byname/")
+    public ResponseEntity<Auditorium> findAuditoriumByName(@RequestParam(value = "name") String name){
+        return new ResponseEntity<>(auditoriumService.findAuditoriumByName(name).get(), HttpStatus.OK);
+    }
+
     @PostMapping("/")
     public ResponseEntity<Auditorium> createAuditorium(@RequestBody Auditorium newAuditorium){
         return new ResponseEntity<>(auditoriumService.createAuditorium(newAuditorium), HttpStatus.CREATED);

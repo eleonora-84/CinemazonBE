@@ -20,6 +20,9 @@ public class AuditoriumService {
     public Optional<Auditorium> findAuditoriumById(long id) {
         return auditoriumRepository.findById(id);
     }
+    public Optional<Auditorium> findAuditoriumByName(String name) {
+        return auditoriumRepository.findAuditoriumByName(name);
+    }
 
     public Auditorium createAuditorium(Auditorium newAuditorium) {
         return auditoriumRepository.save(newAuditorium);
@@ -32,9 +35,7 @@ public class AuditoriumService {
             Auditorium oldAud = auditoriumRepository.findById(updatedAuditorium.getId()).get();
             oldAud.setName(updatedAuditorium.getName());
             oldAud.setNumSeats(updatedAuditorium.getNumSeats());
-            oldAud.set3D(updatedAuditorium.is3D());
-            oldAud.set4K(updatedAuditorium.is4K());
-            oldAud.setDolby(updatedAuditorium.isDolby());
+            oldAud.setSeat(updatedAuditorium.getSeat());
             return oldAud;
         }
     }

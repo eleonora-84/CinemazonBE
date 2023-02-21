@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 @CrossOrigin
@@ -26,8 +29,19 @@ public class DataLoadRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Auditorium a1 = new Auditorium("Sala 1", 150, false, true, true);
-        Auditorium a2 = new Auditorium("Sala 2", 100, true, true, true);
+        List<String> seat = new ArrayList<String>();
+        List<String>  rows = new ArrayList<>(List.of("A", "B", "C", "D", "E"));
+        List<String>  seats = new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
+
+        for (String row : rows) {
+            for (String seatNum : seats) {
+                seat.add(row + seatNum);
+            }
+        }
+
+        System.out.println(seat);
+        Auditorium a1 = new Auditorium("Sala1", 150, seat);
+        Auditorium a2 = new Auditorium("Sala2", 100, seat);
         auditoriumService.createAuditorium(a1);
         auditoriumService.createAuditorium(a2);
 
