@@ -3,6 +3,7 @@ package com.cinemazon.cinemazon.services;
 import com.cinemazon.cinemazon.entities.MovieShow;
 import com.cinemazon.cinemazon.repositories.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,7 +17,7 @@ public class ShowService {
     private ShowRepository showRepository;
 
     public List<MovieShow> findAllShows() {
-        return showRepository.findAll();
+        return showRepository.findAll((Sort.by(Sort.Direction.ASC, "day")).and(Sort.by(Sort.Direction.ASC, "time")));
     }
 
     public Optional<MovieShow> findShowById(long id) {

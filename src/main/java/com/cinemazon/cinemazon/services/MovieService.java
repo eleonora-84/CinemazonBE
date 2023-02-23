@@ -4,6 +4,7 @@ import com.cinemazon.cinemazon.entities.Auditorium;
 import com.cinemazon.cinemazon.entities.Movie;
 import com.cinemazon.cinemazon.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     public List<Movie> findAllMovies() {
-        return movieRepository.findAll();
+        return movieRepository.findAll((Sort.by(Sort.Direction.ASC, "title")));
     }
 
     public Optional<Movie> findMovieById(long id) {

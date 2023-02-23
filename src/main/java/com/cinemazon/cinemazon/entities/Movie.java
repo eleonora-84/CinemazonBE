@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 // TODO Aggiungere anno film
-// TODO Aggiungere locandina film
 @Entity
 @Data
 @NoArgsConstructor
