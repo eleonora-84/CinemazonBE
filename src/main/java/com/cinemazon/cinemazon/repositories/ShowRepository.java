@@ -18,5 +18,7 @@ public interface ShowRepository extends JpaRepository<MovieShow, Long> {
     public List<MovieShow> findByDay(LocalDate day);
     public List<MovieShow> findByTime(LocalTime time);
 
+    public void deleteShowByMovieTitleAndDayAndTime(String title, LocalDate day, LocalTime time);
+
 
 }

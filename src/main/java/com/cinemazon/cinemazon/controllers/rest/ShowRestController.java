@@ -25,6 +25,11 @@ public class ShowRestController {
     public ResponseEntity<List<MovieShow>> findAllShows(){
         return new ResponseEntity<>(showService.findAllShows(), HttpStatus.OK);
     }
+
+    @GetMapping("/all/sorted")
+    public ResponseEntity<List<MovieShow>> findAllShowsSorted(){
+        return new ResponseEntity<>(showService.findAllShowsSorted(), HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<MovieShow> findShowById(@PathVariable long id){
         if (showService.findShowById(id).isEmpty()){
@@ -77,9 +82,14 @@ public class ShowRestController {
         return new ResponseEntity<>(showService.updateShow(updatedMovieShow), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteShowById(@PathVariable long id){
-        showService.deleteShowById(id);
-        return new ResponseEntity<>("Spettacolo eliminato con successo", HttpStatus.OK);
+    @DeleteMapping("/deletebytitledaytime")
+    public ResponseEntity<String> deleteShowByTitleAndDayAndTime(@RequestParam(value = "title", required = true) String title, @RequestParam(value = "day", required = true) @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate day, @RequestParam(value = "time", required = true) @DateTimeFormat(pattern = "HH:mm") LocalTime time){
+        if (showService.findShowByMovieTitleAndDayAndTime(title, day, time).isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
+        }
+        else{
+            showService.deleteShowByMovieTitleAndDayAndTime(title, day, time);
+            return new ResponseEntity<>("Spettacolo cancellato con successo", HttpStatus.OK);
+        }
     }
 }

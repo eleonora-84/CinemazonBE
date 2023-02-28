@@ -2,6 +2,7 @@ package com.cinemazon.cinemazon.services;
 
 import com.cinemazon.cinemazon.entities.MovieShow;
 import com.cinemazon.cinemazon.repositories.ShowRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class ShowService {
     private ShowRepository showRepository;
 
     public List<MovieShow> findAllShows() {
+        return showRepository.findAll();
+    }
+    public List<MovieShow> findAllShowsSorted() {
         return showRepository.findAll((Sort.by(Sort.Direction.ASC, "day")).and(Sort.by(Sort.Direction.ASC, "time")));
     }
 
@@ -57,8 +61,8 @@ public class ShowService {
         }
     }
 
-    public void deleteShowById(long id) {
-        showRepository.deleteById(id);
+    public void deleteShowByMovieTitleAndDayAndTime(String title, LocalDate day, LocalTime time){
+        showRepository.deleteShowByMovieTitleAndDayAndTime(title, day, time);
     }
 
 }

@@ -22,6 +22,10 @@ public class MovieRestController {
     public ResponseEntity<List<Movie>> findAllMovies(){
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
     }
+    @GetMapping("/all/sorted")
+    public ResponseEntity<List<Movie>> findAllMoviesSorted(){
+        return new ResponseEntity<>(movieService.findAllMoviesSorted(), HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Movie> findMovieById(@PathVariable long id){
         if (movieService.findMovieById(id).isEmpty()){
@@ -51,9 +55,15 @@ public class MovieRestController {
         return new ResponseEntity<>(movieService.updateMovie(updatedMovie), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletebytitle")
+    public ResponseEntity<String> deleteMovieByMovieTitle(@RequestParam String title){
+        movieService.deleteMovieByTitle(title);
+        return new ResponseEntity<>("Film" + title + " eliminato con successo", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deletebyid/{id}")
     public ResponseEntity<String> deleteMovieById(@PathVariable long id){
-        movieService.deleteMovieById(id);
-        return new ResponseEntity<>("Film eliminato con successo", HttpStatus.OK);
+        movieService.deleteById(id);
+        return new ResponseEntity<>("Film con id " + id + " cancellato con successo", HttpStatus.OK);
     }
 }

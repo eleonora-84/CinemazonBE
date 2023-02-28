@@ -29,6 +29,7 @@ public class DataLoadRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         List<String> seat = new ArrayList<String>();
         List<String>  rows = new ArrayList<>(List.of("A", "B", "C", "D", "E"));
         List<String>  seats = new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
@@ -39,7 +40,6 @@ public class DataLoadRunner implements CommandLineRunner {
             }
         }
 
-        System.out.println(seat);
         Auditorium a1 = new Auditorium("Sala1", 50, seat);
         Auditorium a2 = new Auditorium("Sala2", 50, seat);
         Auditorium a3 = new Auditorium("Sala3", 50, seat);
@@ -89,8 +89,8 @@ public class DataLoadRunner implements CommandLineRunner {
         showService.createShow(new MovieShow(LocalDate.of(2023, 03, 12), LocalTime.of(20, 00), m1, a2));
         showService.createShow(new MovieShow(LocalDate.of(2023, 03, 12), LocalTime.of(22, 30), m7, a2));
         showService.createShow(new MovieShow(LocalDate.of(2023, 03, 12), LocalTime.of(20, 00), m2, a3));
-        showService.createShow(new MovieShow(LocalDate.of(2023, 03, 12), LocalTime.of(22, 30), m8, a3));
 
         System.out.println("Application started");
+
     }
 }

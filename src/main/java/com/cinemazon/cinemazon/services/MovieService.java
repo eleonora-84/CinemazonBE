@@ -16,9 +16,12 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     public List<Movie> findAllMovies() {
-        return movieRepository.findAll((Sort.by(Sort.Direction.ASC, "title")));
+        return movieRepository.findAll();
     }
 
+    public List<Movie> findAllMoviesSorted() {
+        return movieRepository.findAll((Sort.by(Sort.Direction.ASC, "title")));
+    }
     public Optional<Movie> findMovieById(long id) {
         return movieRepository.findById(id);
     }
@@ -50,7 +53,11 @@ public class MovieService {
         }
     }
 
-    public void deleteMovieById(long id) {
+    public void deleteMovieByTitle(String title) {
+        movieRepository.deleteByTitle(title);
+    }
+    public void deleteById(long id){
+
         movieRepository.deleteById(id);
     }
 
