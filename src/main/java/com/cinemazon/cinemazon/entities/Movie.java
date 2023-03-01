@@ -1,9 +1,7 @@
 package com.cinemazon.cinemazon.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -12,7 +10,10 @@ import lombok.AllArgsConstructor;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-// TODO Aggiungere anno film
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -44,6 +45,11 @@ public class Movie {
 
     private boolean isOV;
     private String moviePoster;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<MovieShow> show = new ArrayList<>();
+
 
     public Movie(String title, String director, int duration, String plot, boolean isThreeD, boolean isFourK, boolean isDolby, boolean isVM14, boolean isVM18, boolean isOV, String moviePoster) {
         this.title = title;

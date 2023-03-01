@@ -1,7 +1,9 @@
 package com.cinemazon.cinemazon.repositories;
 
 import com.cinemazon.cinemazon.entities.MovieShow;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -18,6 +20,8 @@ public interface ShowRepository extends JpaRepository<MovieShow, Long> {
     public List<MovieShow> findByDay(LocalDate day);
     public List<MovieShow> findByTime(LocalTime time);
 
+    @Transactional
+    @Modifying
     public void deleteShowByMovieTitleAndDayAndTime(String title, LocalDate day, LocalTime time);
 
 

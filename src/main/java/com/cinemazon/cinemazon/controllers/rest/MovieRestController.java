@@ -58,7 +58,7 @@ public class MovieRestController {
     @DeleteMapping("/deletebytitle")
     public ResponseEntity<String> deleteMovieByMovieTitle(@RequestParam String title){
         movieService.deleteMovieByTitle(title);
-        return new ResponseEntity<>("Film" + title + " eliminato con successo", HttpStatus.OK);
+        return new ResponseEntity<>("Film " + title + " eliminato con successo", HttpStatus.OK);
     }
 
     @DeleteMapping("/deletebyid/{id}")
