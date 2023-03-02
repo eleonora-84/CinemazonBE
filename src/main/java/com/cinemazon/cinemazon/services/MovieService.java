@@ -47,8 +47,8 @@ public class MovieService {
             oldMovie.setFourK(updatedMovie.isFourK());
             oldMovie.setOV(updatedMovie.isOV());
             oldMovie.setDolby(updatedMovie.isDolby());
-            oldMovie.setVM14(updatedMovie.isVM14());
             oldMovie.setMoviePoster(updatedMovie.getMoviePoster());
+            oldMovie.setRating(updatedMovie.getRating());
             return oldMovie;
         }
     }

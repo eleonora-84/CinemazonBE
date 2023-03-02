@@ -39,9 +39,8 @@ public class ShowRestController {
             return new ResponseEntity<>(showService.findShowById(id).get(), HttpStatus.OK);
         }
     }
-    @GetMapping("/movie/")
-     //TODO + @PATHVARIABLE bytitle/
-    public ResponseEntity<List<MovieShow>> findShowByMovieTitle(@RequestParam(value = "movie") String title){
+    @GetMapping("/movie")
+    public ResponseEntity<List<MovieShow>> findShowByMovieTitle(@RequestParam(value = "title") String title){
         return new ResponseEntity<>(showService.findShowsByMovieTitle(title), HttpStatus.OK);
     }
 
