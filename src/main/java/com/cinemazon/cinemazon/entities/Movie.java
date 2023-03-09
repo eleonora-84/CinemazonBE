@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,7 @@ public class Movie {
     private boolean isDolby;
     private boolean isOV;
     private String moviePoster;
+    @Value("#{T(enums.Rating).PERTUTTI}")
     private Rating rating;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
