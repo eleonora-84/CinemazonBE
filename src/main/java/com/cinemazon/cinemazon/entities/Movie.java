@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Movie {
     @Min(1)
     private int duration;
 
-    @NotEmpty
+    @Length(min = 1, max = 500)
     private String plot;
 
     private boolean isThreeD;
